@@ -1,0 +1,49 @@
+{% extends "base_layout.html" %}
+{% from "_macros.html" import render_pagination %}
+{% block main %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-sm">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Username</th>
+                                    <th>Created At</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for account in data.items %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ account.username }}</td>
+                                    <td>{{ account.created_at }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <div class="dataTables_info" id="selection-datatable_info" role="status" aria-live="polite">
+                                共 {{ data.total }} 条数据
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate">
+                                {{ render_pagination(data) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

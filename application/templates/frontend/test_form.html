@@ -1,0 +1,14 @@
+{% extends "base_layout.html" %}
+{% from "_macros.html" import render_form, render_field %}
+{% block main %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                {% call render_form(form) %}
+                    {{ render_field(form.username) }}
+                    {{ render_field(form.password) }}
+                {% endcall %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
